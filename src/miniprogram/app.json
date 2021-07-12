@@ -1,8 +1,9 @@
 {
 	"pages": [
+		"pages/account/index",
 		"pages/index/index",
-		"pages/cart/cart",
-		"pages/order/order",
+		"pages/water/index",
+		"pages/chart/index",
 		"pages/detail/detail",
 		"pages/submit/submit"
 	],
@@ -20,22 +21,22 @@
 		"backgroundColor": "#ffffff",
 		"list": [
 			{
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/account/index",
 				"iconPath": "images/tabbar/home-off.png",
 				"selectedIconPath": "images/tabbar/home-on.png",
-				"text": "首页"
+				"text": "账户"
 			},
 			{
-				"pagePath": "pages/cart/cart",
+				"pagePath": "pages/water/index",
 				"iconPath": "images/tabbar/cart-off.png",
 				"selectedIconPath": "images/tabbar/cart-on.png",
-				"text": "购物车"
+				"text": "流水"
 			},
 			{
-				"pagePath": "pages/order/order",
+				"pagePath": "pages/chart/index",
 				"iconPath": "images/tabbar/order-off.png",
 				"selectedIconPath": "images/tabbar/order-on.png",
-				"text": "订单"
+				"text": "图表"
 			}
 		]
 	},

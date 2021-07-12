@@ -1,12 +1,9 @@
-// const _ = require('lodash');
 const add  = require('lodash/add');
 App({
   /**
    * APP加载时运行回调
    */
   onLaunch: function () {
-    // console.log('测试依赖',_.add(3,4))
-    console.log('测试依赖',add(3,4))
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -21,8 +18,8 @@ App({
    */
   getGoodSList: function (obj) {
     wx.cloud.callFunction({
-      name:"getGoodlist",
-      success(res){
+      name: "getGoodlist",
+      success(res) {
         if (obj != null && obj.success != null) {       //判断是否有success回调写入
           obj.success(res.result);            //调用回调，将商品列表信息传回
         }
@@ -35,11 +32,11 @@ App({
    */
   getGoodSDetail: function (obj) {
     wx.cloud.callFunction({
-      name:"getGooddetail",
-      data:{
-        id:obj.id
+      name: "getGooddetail",
+      data: {
+        id: obj.id
       },
-      success(res){
+      success(res) {
         if (obj != null && obj.success != null) {       //判断是否有success回调写入
           obj.success(res.result);                    //根据id拿到详情对象，传回
         }
@@ -52,11 +49,11 @@ App({
    */
   addShopCart: function (obj) {
     wx.cloud.callFunction({
-      name:"addShopcart",
-      data:{
-        data:obj.data
+      name: "addShopcart",
+      data: {
+        data: obj.data
       },
-      success(res){
+      success(res) {
         if (obj.cart == false) {                          //是否为加入购物车，false为直接付款，也包含加入购物车的操作
           wx.setStorageSync('ids', [res.result]);           //将订单项目id放入存储里，以便在后续操作直接获取
         }
@@ -70,17 +67,17 @@ App({
    */
   getShopCart: function (obj) {
     wx.cloud.callFunction({
-      name:"getShopcart",
-      data:{
-        cart:obj.cart,
-        done:obj.done
+      name: "getShopcart",
+      data: {
+        cart: obj.cart,
+        done: obj.done
       },
-      success(res){
+      success(res) {
         if (obj != null && obj.success != null) {         //判断是否有success回调写入
           obj.success(res.result);                          //调用回调，将订单列表信息传回
         }
       }
-    }) 
+    })
   },
   /**
    * 删除购物车商品
@@ -88,11 +85,11 @@ App({
    */
   delShopCart: function (obj) {
     wx.cloud.callFunction({
-      name:'delShopcart',
-      data:{
-        ids:obj.list
+      name: 'delShopcart',
+      data: {
+        ids: obj.list
       },
-      success(res){
+      success(res) {
         if (obj != null && obj.success != null) {         //判断是否有success回调写入
           obj.success();                                  //调用回调
         }
@@ -105,16 +102,16 @@ App({
    */
   getBillList: function (obj) {
     wx.cloud.callFunction({
-      name:"getShopcart",
-      data:{
-        ids:obj.ids
+      name: "getShopcart",
+      data: {
+        ids: obj.ids
       },
-      success(res){
+      success(res) {
         if (obj != null && obj.success != null) {         //判断是否有success回调写入
           obj.success(res.result);                          //调用回调，将订单列表信息传回
         }
       }
-    }) 
+    })
   },
   /**
    * 订单提交信息
@@ -122,14 +119,14 @@ App({
    */
   submitorder: function (obj) {
     wx.cloud.callFunction({
-      name:"submitShopcart",
-      data:{
-        deliveryType : obj.deliveryType,
-        remark : obj.remark,
-        addressData : obj.addressData,
-        ids : obj.ids
+      name: "submitShopcart",
+      data: {
+        deliveryType: obj.deliveryType,
+        remark: obj.remark,
+        addressData: obj.addressData,
+        ids: obj.ids
       },
-      success(res){
+      success(res) {
         obj.success();
       }
     })
@@ -140,11 +137,11 @@ App({
    */
   toPayTap: function (obj) {
     wx.cloud.callFunction({
-      name:"payShopcart",
-      data:{
-        ids : obj.ids
+      name: "payShopcart",
+      data: {
+        ids: obj.ids
       },
-      success(res){
+      success(res) {
         obj.success();
       }
     })
@@ -155,11 +152,11 @@ App({
    */
   toDoneOrder: function (obj) {
     wx.cloud.callFunction({
-      name:"doneShopcart",
-      data:{
-        ids : obj.ids
+      name: "doneShopcart",
+      data: {
+        ids: obj.ids
       },
-      success(res){
+      success(res) {
         obj.success();
       }
     })
@@ -170,11 +167,11 @@ App({
    */
   delOrderTap: function (obj) {
     wx.cloud.callFunction({
-      name:'delShopcart',
-      data:{
-        ids:obj.ids
+      name: 'delShopcart',
+      data: {
+        ids: obj.ids
       },
-      success(res){
+      success(res) {
         if (obj != null && obj.success != null) {         //判断是否有success回调写入
           obj.success();                                  //调用回调
         }

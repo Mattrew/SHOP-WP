@@ -2,11 +2,10 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const {
 	CleanWebpackPlugin
-} = require('clean-webpack-plugin')
-const loadpath = require('./plugin/loadpath')
-
-const srcdir = path.resolve(__dirname, 'src')
-const putdir = path.resolve(__dirname, 'dist')
+} = require('clean-webpack-plugin');
+const loadpath = require('./plugin/loadpath');
+const srcdir = path.resolve(__dirname, 'src');
+const putdir = path.resolve(__dirname, 'dist');
 
 module.exports = {
 	entry: (new loadpath).init({
