@@ -10,16 +10,10 @@ const putdir = path.resolve(__dirname, 'dist')
 
 module.exports = {
 	entry: (new loadpath).init({
-		src:path.resolve(srcdir, 'miniprogram/app.js')
+		src: path.resolve(srcdir, 'miniprogram/app.js')
 	}),
-	// entry: {
-	// 	'app':path.resolve(srcdir, 'miniprogram/app.js'),
-	// 	'pages/cart/cart':path.resolve(srcdir, 'miniprogram/pages/cart/cart.js'),
-	// 	'pages/detail/detail':path.resolve(srcdir, 'miniprogram/pages/detail/detail.js'),
-	// 	'pages/index/index':path.resolve(srcdir, 'miniprogram/pages/index/index.js'),
-	// 	'pages/order/order':path.resolve(srcdir, 'miniprogram/pages/order/order.js'),
-	// 	'pages/submit/submit':path.resolve(srcdir, 'miniprogram/pages/submit/submit.js'),
-	// },
+	mode: 'production',
+	devtool: 'source-map',
 	output: {
 		filename: '[name].js',
 		path: path.resolve(putdir, 'miniprogram')
